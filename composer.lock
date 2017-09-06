@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "79e1c3e3da077e82097c320b4ec4636f",
+    "content-hash": "3725c217d78637bc84f71846b8cac651",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -178,6 +178,55 @@
                 "vk"
             ],
             "time": "2017-07-29T21:57:41+00:00"
+        },
+        {
+            "name": "fondbot/telegram",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fondbot/drivers-telegram.git",
+                "reference": "874853f6601c6d4468eab4a46e02f5051f227133"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fondbot/drivers-telegram/zipball/874853f6601c6d4468eab4a46e02f5051f227133",
+                "reference": "874853f6601c6d4468eab4a46e02f5051f227133",
+                "shasum": ""
+            },
+            "require": {
+                "fondbot/framework": "^1.0",
+                "guzzlehttp/guzzle": "^6.2",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.6",
+                "larapack/dd": "^1.1",
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FondBot\\Drivers\\Telegram\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vladimir Yuldashev",
+                    "email": "vladimir@fondbot.com"
+                }
+            ],
+            "description": "Telegram driver for FondBot",
+            "time": "2017-06-01T12:07:01+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
