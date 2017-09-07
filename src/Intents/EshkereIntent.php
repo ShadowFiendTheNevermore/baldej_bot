@@ -29,11 +29,13 @@ class EshkereIntent extends Intent
 
     public function run(ReceivedMessage $message): void
     {
+        $path = realpath(__DIR__ .'/../../resources/voices/eshkere_voice.ogg');
         $eshkere = (new Attachment)
-                      ->setPath('./../../resources/voices/eshkere_voice.ogg')
+                      ->setPath($path)
                       ->setType(Attachment::TYPE_AUDIO);
 
+        $this->sendMessage($path);
         // Send eshkere voice with delay in 1 second
-        $this->sendAttachment($eshkere, 1);
+        $this->sendAttachment($eshkere);
     }
 }
