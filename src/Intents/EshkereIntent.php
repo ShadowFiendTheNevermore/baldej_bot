@@ -23,19 +23,31 @@ class EshkereIntent extends Intent
             $this->exact('/eshkere'),
             $this->exact('/эщкере'),
             $this->exact('эщкере'),
-            $this->exact('eshkere')
+            $this->exact('eshkere'),
+            $this->exact('/burger'),
+            $this->exact('/FACE'),
+            $this->exact('/saint-p'),
         ];
     }
 
     public function run(ReceivedMessage $message): void
     {
-        $path = realpath(__DIR__ .'/../../resources/voices/eshkere_voice.ogg');
-        $eshkere = (new Attachment)
-                      ->setPath($path)
+        $eshkere_voice = (new Attachment)
+                      ->setPath(realpath(__DIR__ .'/../../resources/voices/eshkere_voice.ogg'))
                       ->setType(Attachment::TYPE_AUDIO);
 
-        $this->sendMessage($path);
+        $eshkere_phrase = collect([
+            'Я РОНЯЮ ЗАПАД! УУУ!',
+            'ТРАЧУ 20 ТЫСЯЧ НА КРАСОВКИ И МНЕ ПОХУЙ',
+            'Я БУХАЮ И МНЕ ПОХУЙ',
+            'ТРАХНУЛ СУКУ БЕЗ ГАНДОНА',
+            'ЕДУ В МАГАЗИН **GUCCI** САНКТ-ПЕТЕРБУРГЕ',
+            'ОНА ЖРЕТ МОЙ ХУЙ КАК БУДТО ЭТО БУРГЕР',
+            'ВОТ ТЫ ФЛЕКСИШЬ'
+        ])->random();
+
+        $this->sendMessage($eshkere_phrase);
         // Send eshkere voice with delay in 1 second
-        $this->sendAttachment($eshkere);
+        $this->sendAttachment($eshkere_voice);
     }
 }
