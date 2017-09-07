@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Bot\Providers;
 
+use Bot\Intents\EshkereIntent;
 use Bot\Intents\ExampleIntent;
 use Bot\Intents\FallbackIntent;
 use FondBot\Conversation\IntentServiceProvider as BaseIntentServiceProvider;
@@ -19,6 +20,7 @@ class IntentServiceProvider extends BaseIntentServiceProvider
     {
         return [
             ExampleIntent::class,
+            EshkereIntent::class
         ];
     }
 
