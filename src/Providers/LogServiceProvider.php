@@ -19,7 +19,7 @@ class LogServiceProvider extends BaseLogServiceProvider
     {
         return [
             // Write application logs to "/resources/fondbot/logs/app.log"
-            new StreamHandler(resources('php://stderr')),
+            new StreamHandler('php://stderr'),
         ];
     }
 }
