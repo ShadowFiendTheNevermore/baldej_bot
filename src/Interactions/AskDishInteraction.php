@@ -26,6 +26,6 @@ class AskDishInteraction extends Interaction
      */
     public function process(ReceivedMessage $reply): void
     {
-        $this->sendMessage('Вы будите заказывать' . $reply->getText());
+        $this->sendMessage($reply->getText());
     }
 }
