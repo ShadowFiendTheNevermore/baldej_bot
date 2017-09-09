@@ -20,7 +20,8 @@ class IntentServiceProvider extends BaseIntentServiceProvider
     {
         return [
             ExampleIntent::class,
-            EshkereIntent::class
+            EshkereIntent::class,
+            KfcListIntent::class
         ];
     }
 

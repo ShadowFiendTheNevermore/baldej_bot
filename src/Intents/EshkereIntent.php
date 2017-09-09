@@ -22,11 +22,8 @@ class EshkereIntent extends Intent
         return [
             $this->exact('/eshkere'),
             $this->exact('/эщкере'),
-            $this->exact('эщкере'),
-            $this->exact('eshkere'),
             $this->exact('/burger'),
-            $this->exact('/FACE'),
-            $this->exact('/saint-p'),
+            $this->exact('/FACE')
         ];
     }
 
@@ -46,8 +43,8 @@ class EshkereIntent extends Intent
             'ВОТ ТЫ ФЛЕКСИШЬ'
         ])->random();
 
+        // Eshkereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
         $this->sendMessage($eshkere_phrase);
-        // Send eshkere voice with delay in 1 second
         $this->sendAttachment($eshkere_voice);
     }
 }
