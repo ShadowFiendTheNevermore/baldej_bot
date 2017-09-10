@@ -35,7 +35,7 @@ class KfcListIntent extends Intent
 
         foreach ($categories as $category) {
             $keyboard->addButton(
-                (new Button)->setLabel($category);
+                (new Button)->setLabel($category)
             );
         }
 
