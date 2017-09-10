@@ -10,7 +10,7 @@ use FondBot\Conversation\Activators\Activator;
 use FondBot\Conversation\Intent;
 use FondBot\Drivers\ReceivedMessage;
 use FondBot\Templates\Keyboard;
-use FondBot\Templates\Keyboard\Button;
+use FondBot\Templates\Keyboard\ReplyButton;
 
 class KfcListIntent extends Intent
 {
@@ -35,7 +35,7 @@ class KfcListIntent extends Intent
 
         foreach ($categories as $category) {
             $keyboard->addButton(
-                (new Button)->setLabel($category)
+                (new ReplyButton)->setLabel($category)
             );
         }
 
