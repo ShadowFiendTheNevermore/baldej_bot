@@ -19,7 +19,7 @@ class KfcListIntent extends Intent
     public function activators(): array
     {
         return [
-            $this->exact('/list')
+            $this->exact('/kfc_listing')
         ];
     }
 
