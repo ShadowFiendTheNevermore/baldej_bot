@@ -26,6 +26,7 @@ class ShowListingIntent extends Intent
     public function run(ReceivedMessage $message): void
     {
         $repo = new FoodRepository;
+        
         $message = print_r($repo->getList()->all(), true);
 
         $this->sendMessage($message);
