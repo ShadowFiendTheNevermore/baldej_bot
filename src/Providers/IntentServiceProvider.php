@@ -8,6 +8,7 @@ use Bot\Intents\EshkereIntent;
 use Bot\Intents\ExampleIntent;
 use Bot\Intents\FallbackIntent;
 use Bot\Intents\KfcListIntent;
+use Bot\Intents\ShowListingIntent;
 use FondBot\Conversation\IntentServiceProvider as BaseIntentServiceProvider;
 
 class IntentServiceProvider extends BaseIntentServiceProvider
@@ -22,7 +23,8 @@ class IntentServiceProvider extends BaseIntentServiceProvider
         return [
             ExampleIntent::class,
             EshkereIntent::class,
-            KfcListIntent::class
+            KfcListIntent::class,
+            ShowListingIntent::class
         ];
     }
 

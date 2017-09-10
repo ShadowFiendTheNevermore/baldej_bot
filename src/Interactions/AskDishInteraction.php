@@ -16,7 +16,7 @@ class AskDishInteraction extends Interaction
      */
     public function run(ReceivedMessage $message): void
     {
-        $this->sendMessage('Шо будите заказывать ?');
+        $this->sendMessage('Выбирите из списка что будите заказывать');
     }
 
     /**

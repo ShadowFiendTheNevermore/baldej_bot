@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Bot\Intents;
 
-use Bot\Interactions\AskDishInteraction;
+use Bot\Repository\FoodRepository;
 use FondBot\Conversation\Activators\Activator;
 use FondBot\Conversation\Intent;
 use FondBot\Drivers\ReceivedMessage;
 
-class KfcListIntent extends Intent
+class ShowListingIntent extends Intent
 {
     /**
      * Intent activators.
@@ -19,12 +19,14 @@ class KfcListIntent extends Intent
     public function activators(): array
     {
         return [
-            $this->exact('/list')
+            $this->exact('/list'),
         ];
     }
 
     public function run(ReceivedMessage $message): void
     {
-        $this->jump(AskDishInteraction::class);
+        $repo = new FoodRepository;
+
+        $this->sendMessage(print_r($repo->getList()));
     }
 }
