@@ -28,7 +28,7 @@ class KfcListIntent extends Intent
     {
         $categories = new FoodCategoryRepository;
 
-        $message = $categories->getList()->values()->all()->toJson();
+        $message = $categories->getList()->values()->toJson();
 
         $this->sendMessage($message);
     }
