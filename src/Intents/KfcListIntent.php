@@ -9,6 +9,8 @@ use Bot\Repository\FoodCategoryRepository;
 use FondBot\Conversation\Activators\Activator;
 use FondBot\Conversation\Intent;
 use FondBot\Drivers\ReceivedMessage;
+use FondBot\Templates\Keyboard;
+use FondBot\Templates\Keyboard\Button;
 
 class KfcListIntent extends Intent
 {
@@ -27,9 +29,16 @@ class KfcListIntent extends Intent
     public function run(ReceivedMessage $message): void
     {
         $categories = new FoodCategoryRepository;
+        $categories = $categories->getList()->values()->all();
 
-        $message = print_r($categories->getList()->values()->all(), true);
+        $keyboard = new Keyboard;
 
-        $this->sendMessage($message);
+        foreach ($categories as $category) {
+            $keyboard->addButton(
+                (new Button)->setLabel($category);
+            );
+        }
+
+        $this->sendMessage('Доступные категории', $keyboard);
     }
 }
