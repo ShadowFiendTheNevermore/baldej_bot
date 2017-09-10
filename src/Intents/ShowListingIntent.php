@@ -27,6 +27,6 @@ class ShowListingIntent extends Intent
     {
         $repo = new FoodRepository;
 
-        $this->sendMessage(print_r($repo->getList()));
+        $this->sendMessage(print_r($repo->getList()->all()));
     }
 }
