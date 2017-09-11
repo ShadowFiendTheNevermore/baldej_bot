@@ -23,7 +23,7 @@ class FoodCategoryRepository implements Repository
     public function getItem($item_key)
     {
         return $this->getList()->first(function ($value, $key){
-           return $value === $item_key; 
+           return $value === $item_key;
         });
     }
 

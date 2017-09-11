@@ -16,3 +16,5 @@ $container->addServiceProvider(new Bot\Providers\FilesystemServiceProvider);
 $container->addServiceProvider(new Bot\Providers\IntentServiceProvider);
 $container->addServiceProvider(new Bot\Providers\LogServiceProvider);
 $container->addServiceProvider(new Bot\Providers\QueueServiceProvider);
+// $container->addServiceProvider(new Bot\Providers\DatabaseServiceProvider);
+$container->addServiceProvider(new Bot\Providers\TestRouteServiceProvider(''));
