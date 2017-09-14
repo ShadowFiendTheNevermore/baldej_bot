@@ -4,6 +4,8 @@ namespace Bot\Providers;
 
 use Bot\TestController;
 use FondBot\Application\RouteServiceProvider;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Database\Capsule\Manager;
 use League\Route\RouteCollection;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\Response\SapiEmitter;
@@ -30,7 +32,7 @@ class TestRouteServiceProvider extends RouteServiceProvider
         });
         $this->container->share('response', Response::class);
         $this->container->share('emitter', SapiEmitter::class);
-        
+
         $this->container->share('router', function () {
             $router = new RouteCollection($this->container);
 

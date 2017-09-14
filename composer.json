@@ -6,7 +6,8 @@
     "require": {
         "php": "^7.1",
         "fondbot/framework": "^1.0",
-        "fondbot/telegram": "^1.0"
+        "fondbot/telegram": "^1.0",
+        "illuminate/database": "5.1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.6",
@@ -26,7 +27,8 @@
     },
     "scripts": {
         "post-root-package-install": [
-            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "php ./bin/toolbelt db:install",
         ]
     },
     "config": {

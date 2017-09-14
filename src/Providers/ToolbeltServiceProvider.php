@@ -16,6 +16,9 @@ class ToolbeltServiceProvider extends BaseToolbeltServiceProvider
      */
     public function commands(): array
     {
-        return [];
+        return [
+            new \Bot\Commands\SetupDbCommand,
+            new \Bot\Commands\DeleteDbCommand,
+        ];
     }
 }
