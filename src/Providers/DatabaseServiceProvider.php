@@ -27,17 +27,16 @@ class DatabaseServiceProvider extends AbstractServiceProvider
     {
         $capsule = new Capsule;
         $capsule->addConnection([
-            'driver'    => 'mysql',
-            'host'      => 'localhost',
-            'database'  => 'kfc_db',
-            'username'  => 'root',
-            'password'  => 'root',
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
+            'driver'    => env('DB_DRIVER', 'mysql'),
+            'host'      => env('DB_HOST', 'localhost'),
+            'database'  => env('DB_NAME','kfc_db'),
+            'username'  => env('DB_USERNAME','root'),
+            'password'  => env('DB_PASSWD','root'),
+            'charset'   => env('DB_CHARSET','utf8'),
+            'collation' => env('DB_COLLATION','utf8_unicode_ci'),
+            'prefix'    => env('DB_PREFIX',''),
         ]);
 
-        // $capsule->setAsGlobal();
         $capsule->bootEloquent();
 
         $this->container->share('DB', $this->connect($capsule));
@@ -46,7 +45,7 @@ class DatabaseServiceProvider extends AbstractServiceProvider
         });
     }
 
-    protected function connect(Capsule $capsule) : Connection
+    private function connect(Capsule $capsule) : Connection
     {
         return $capsule->getConnection();
     }
