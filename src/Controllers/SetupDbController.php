@@ -1,6 +1,6 @@
 <?php 
 
-namespace Bot;
+namespace Bot\Controllers;
 
 use Illuminate\Database\Schema\Builder as Schema;
 
@@ -28,7 +28,8 @@ class SetupDbController
     }
 
     /**
-     * Setup DB
+     * Setup DB handle method
+     * 
      * @return void
      */
     public function setup()
@@ -81,11 +82,8 @@ class SetupDbController
      */
     public function delete()
     {
-        // $this->schema->table('products', function ($table){
-        //     $table->dropForeign(['category_id']);
-        // });
-        $this->schema->drop('categories');
         $this->schema->drop('products');
+        $this->schema->drop('categories');
     }
 
     /**

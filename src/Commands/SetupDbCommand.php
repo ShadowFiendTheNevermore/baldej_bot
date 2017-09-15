@@ -2,7 +2,7 @@
 
 namespace Bot\Commands;
 
-use Bot\SetupDbController;
+use Bot\Controllers\SetupDbController;
 use FondBot\Toolbelt\Command;
 
 

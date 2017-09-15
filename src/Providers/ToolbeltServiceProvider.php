@@ -19,6 +19,7 @@ class ToolbeltServiceProvider extends BaseToolbeltServiceProvider
         return [
             new \Bot\Commands\SetupDbCommand,
             new \Bot\Commands\DeleteDbCommand,
+            new \Bot\Commands\SeedDbCommand,
         ];
     }
 }

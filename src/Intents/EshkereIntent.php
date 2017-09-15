@@ -22,7 +22,6 @@ class EshkereIntent extends Intent
         return [
             $this->exact('/eshkere'),
             $this->exact('/эщкере'),
-            $this->exact('/burger'),
             $this->exact('/FACE')
         ];
     }

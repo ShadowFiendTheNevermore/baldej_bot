@@ -2,7 +2,7 @@
 
 namespace Bot\Commands;
 
-use Bot\SetupDbController;
+use Bot\Controllers\SetupDbController;
 use FondBot\Toolbelt\Command;
 
 
@@ -12,6 +12,9 @@ use FondBot\Toolbelt\Command;
 class DeleteDbCommand extends Command
 {
 
+    /**
+     * {@inheritdoc}
+     */
     protected function configure(): void
     {
         $this->setName('db:delete');
@@ -19,6 +22,9 @@ class DeleteDbCommand extends Command
         $this->setHelp('I can help you');
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function handle(): void
     {
         $handler = new SetupDbController;

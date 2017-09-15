@@ -4,3 +4,4 @@
 .env
 .phpintel
 composer.lock
+*.sublime-*

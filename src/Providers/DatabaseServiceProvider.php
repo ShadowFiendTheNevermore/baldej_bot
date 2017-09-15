@@ -7,15 +7,18 @@ use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
 use Illuminate\Database\Connection;
 
+
+
 /**
-* 
+* Core database implementation Capsule from illuminate packages
 */
 class DatabaseServiceProvider extends AbstractServiceProvider
 {
 
     protected $provides = [
         'Schema',
-        'DB'
+        'DB',
+        'Seeder'
     ];
 
     /**

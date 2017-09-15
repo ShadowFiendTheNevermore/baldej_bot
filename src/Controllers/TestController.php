@@ -1,14 +1,14 @@
 <?php 
 
-namespace Bot;
+namespace Bot\Controllers;
 
 use Illuminate\Database\Capsule\Manager;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-
 /**
-*  Use this controller for local debugs
+* Use this controller for local debugs
+*  
 * @return Psr\Http\Message\ResponseInterface
 */
 class TestController
