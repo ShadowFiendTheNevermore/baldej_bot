@@ -12,21 +12,15 @@ use Illuminate\Database\Connection;
 /**
 * Core database implementation Capsule from illuminate packages
 */
-class DatabaseServiceProvider extends AbstractServiceProvider
+class DatabaseServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface
 {
-
-    protected $provides = [
-        'Schema',
-        'DB',
-        'Seeder'
-    ];
 
     /**
      * Register method for protect from container aware trait
      * 
      * @return void
      */
-    public function register(): void
+    public function boot(): void
     {
         $capsule = new Capsule;
         $capsule->addConnection([
@@ -40,12 +34,18 @@ class DatabaseServiceProvider extends AbstractServiceProvider
             'prefix'    => env('DB_PREFIX',''),
         ]);
 
+        $capsule->setAsGlobal();
         $capsule->bootEloquent();
 
         $this->container->share('DB', $this->connect($capsule));
         $this->container->share('Schema', function() use($capsule){
             return $this->connect($capsule)->getSchemaBuilder();
         });
+    }
+
+    public function register()
+    {
+        # code...
     }
 
     private function connect(Capsule $capsule) : Connection
