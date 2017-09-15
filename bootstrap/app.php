@@ -1,8 +1,5 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
 require __DIR__.'/../vendor/autoload.php';
 
 $container = new League\Container\Container;
@@ -17,4 +14,4 @@ $container->addServiceProvider(new Bot\Providers\IntentServiceProvider);
 $container->addServiceProvider(new Bot\Providers\LogServiceProvider);
 $container->addServiceProvider(new Bot\Providers\QueueServiceProvider);
 $container->addServiceProvider(new Bot\Providers\DatabaseServiceProvider);
-$container->addServiceProvider(new Bot\Providers\TestRouteServiceProvider(''));
+// $container->addServiceProvider(new Bot\Providers\TestRouteServiceProvider(''));

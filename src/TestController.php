@@ -8,11 +8,12 @@ use Psr\Http\Message\ResponseInterface;
 
 
 /**
-*  TestController
+*  Use this controller for local debugs
+* @return Psr\Http\Message\ResponseInterface
 */
 class TestController
 {
-    public function index(RequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function index(RequestInterface $request, ResponseInterface $response, array $action): ResponseInterface
     {
         $response->getBody()->write('Database was');
 

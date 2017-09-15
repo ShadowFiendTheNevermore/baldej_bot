@@ -5,6 +5,8 @@ require __DIR__.'/../bootstrap/app.php';
 /** @var League\Route\RouteCollection $router */
 $router = $kernel->resolve('router');
 
+$router->get('/test', [Bot\TestController::class, 'index']);
+
 /** @var Zend\Diactoros\Response\SapiEmitter $emitter */
 $emitter = $kernel->resolve('emitter');
 
