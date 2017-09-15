@@ -36,6 +36,13 @@ class DbSeedController
     protected $table = '';
 
     /**
+     * How much category counted
+     * 
+     * @var int
+     */
+    private $category_count = 1;
+
+    /**
      * 
      * @param Builder $DB
      */
@@ -51,20 +58,28 @@ class DbSeedController
      */
     public function seed()
     {
-        $data = $this->generateCategoriesData(12);
-        $this->db->table('categories')->insert($data);
+        $categories = $this->generateCategoriesData(10);
+        $products = $this->generateProductsData(30);
+
+        $this->db->table('categories')->insert($categories);
+        $this->db->table('products')->insert($products);
     }
 
     /**
+     * Data for seeding categories
      * 
-     * @return [type] [description]
+     * @return array 
      */
     private function generateCategoriesData(int $count)
     {
+        if ($count > 0) {
+            $this->category_count = $count;
+        }
+
         for ($i=1; $i <= $count; $i++) { 
             $this->data['categories'][] = [
                 'name'        => $this->fakeGenerator->words(2, true),
-                'code'        => $i,
+                'code'        => "code_{$i}",
                 'description' => $this->fakeGenerator->paragraph(10)
             ];
         }
@@ -72,6 +87,25 @@ class DbSeedController
         return $this->data['categories'];
     }
 
+
+    /**
+     * Data for seeding products
+     * 
+     * @return array 
+     */
+    private function generateProductsData(int $count)
+    {
+        for ($i=1; $i <= $count; $i++) { 
+            $this->data['products'][] = [
+                'name'        => $this->fakeGenerator->words(3, true),
+                'code'        => "code_{$i}",
+                'price'       => $this->fakeGenerator->randomFloat(2, 10, 650),
+                'category_id' => $this->fakeGenerator->numberBetween(1, $this->category_count)
+            ];
+        }
+
+        return $this->data['products'];
+    }
 
 }
 

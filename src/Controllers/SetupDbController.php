@@ -2,6 +2,7 @@
 
 namespace Bot\Controllers;
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Schema\Builder as Schema;
 
 /**
@@ -47,10 +48,10 @@ class SetupDbController
     protected function createCategories() : void
     {
         $this->schema->engine = 'InnoDB';
-        $this->schema->create('categories', function ($table){
+        $this->schema->create('categories', function (Blueprint $table){
             $table->increments('id');
             $table->string('name');
-            $table->integer('code');
+            $table->string('code')->nullable();
             $table->text('description')->nullable();
         });
     }
@@ -63,11 +64,11 @@ class SetupDbController
     protected function createProducts() : void
     {
         $this->schema->engine = 'InnoDB';
-        $this->schema->create('products', function ($table){
+        $this->schema->create('products', function (Blueprint $table){
             $table->increments('id');
             $table->string('name');
-            $table->float('price');
-            $table->integer('code');
+            $table->decimal('price', 15, 2);
+            $table->string('code')->nullable();
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')
                   ->references('id')
