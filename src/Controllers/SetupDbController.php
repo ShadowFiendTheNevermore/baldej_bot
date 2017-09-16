@@ -83,8 +83,8 @@ class SetupDbController
      */
     public function delete()
     {
-        $this->schema->drop('products');
-        $this->schema->drop('categories');
+        $this->schema->dropIfExists('products');
+        $this->schema->dropIfExists('categories');
     }
 
     /**
