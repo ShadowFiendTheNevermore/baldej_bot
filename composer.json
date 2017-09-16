@@ -26,6 +26,11 @@
         }
     },
     "scripts": {
+        "pre-install-cmd": [
+            "php ./bin/toolbelt db:delete",
+            "php ./bin/toolbelt db:setup",
+            "php ./bin/toolbelt db:seed"
+        ],
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ]
