@@ -3,9 +3,10 @@
 namespace Bot\Controllers;
 
 use Bot\Models\Category;
-use Illuminate\Database\Capsule\Manager;
+use Bot\Repositories\FoodCategoryRepository;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Illuminate\Database\Capsule\Manager;
 
 /**
 * Use this controller for local debugs
@@ -14,14 +15,12 @@ use Psr\Http\Message\ResponseInterface;
 */
 class TestController
 {
-    public function index(RequestInterface $request, ResponseInterface $response, array $action): ResponseInterface
+    public function index(RequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        // $category = new Category;
-
-        dd(Category::find(1));
-
-        $response->getBody()->write('Database was');
-
-        return $response;
+        $repo = resolve('RepositoryManager')->get('FoodProduct');
+        $response->getBody()->write($repo->all()->toJson());
+        return $response->withHeader('Content-type','application/json');
     }
 }
+
+
