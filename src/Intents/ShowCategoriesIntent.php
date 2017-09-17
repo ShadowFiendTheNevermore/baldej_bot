@@ -29,14 +29,7 @@ class ShowCategoriesIntent extends Intent
         $message = "Список категорий: \n";
 
         $categories->all()->each(function($category) use ($message){
-            $message .= "
-                <b>{$category->name}</b>
-                \n
-                --------------------------
-                \n
-            ";
+            $this->sendMessage("{$category}.....{$message}")
         });
-
-        $this->sendMessage($message);
     }
 }
