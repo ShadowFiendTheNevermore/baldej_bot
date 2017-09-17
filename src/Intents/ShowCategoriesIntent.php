@@ -19,7 +19,7 @@ class ShowListingIntent extends Intent
     public function activators(): array
     {
         return [
-            $this->exact('/list'),
+            $this->exact('/categories'),
         ];
     }
 
@@ -29,7 +29,12 @@ class ShowListingIntent extends Intent
         $message = "Список категорий: \n";
 
         $categories->all()->each(function($category) use ($message){
-            $message = "<b>{$category->name}</b>\n"
+            $message = "
+                <b>{$category->name}</b>
+                \n
+                --------------------------
+                \n
+            ";
         });
 
         $this->sendMessage($message);
