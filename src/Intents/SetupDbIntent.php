@@ -29,11 +29,13 @@ class SetupDbIntent extends Intent
     {   
         $installer = new SetupDbController;
         $seeder = new DbSeedController;
-
-        $installer->delete();
-        $installer->setup();
-
-        $seeder->seed();
+        try {
+            $installer->delete();
+            $installer->setup();
+            $seeder->seed();
+        } catch (\Exception $e) {
+            $this->sendMessage($e->getMessage());
+        }
 
         $this->sendMessage("БД УСТАНОВЛЕНА");
     }
