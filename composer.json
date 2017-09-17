@@ -7,12 +7,12 @@
         "php": "^7.1",
         "fondbot/framework": "^1.0",
         "fondbot/telegram": "^1.0",
-        "fzaninotto/faker": "^1.6",
         "illuminate/database": "5.1.*"
     },
     "require-dev": {
         "larapack/dd": "^1.1",
         "mockery/mockery": "^0.9.9",
+        "fzaninotto/faker": "^1.6",
         "phpunit/phpunit": "^6.1"
     },
     "autoload": {
