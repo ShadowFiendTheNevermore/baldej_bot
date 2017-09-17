@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Bot\Providers;
 
-use Bot\Intents\EshkereIntent;
 use Bot\Intents\ExampleIntent;
 use Bot\Intents\FallbackIntent;
-use Bot\Intents\KfcListIntent;
+use Bot\Intents\SetupDbIntent;
 use Bot\Intents\ShowCategoriesIntent;
 use FondBot\Conversation\IntentServiceProvider as BaseIntentServiceProvider;
 
@@ -21,7 +20,8 @@ class IntentServiceProvider extends BaseIntentServiceProvider
     public function intents(): array
     {
         return [
-            ShowCategoriesIntent::class
+            ShowCategoriesIntent::class,
+            SetupDbIntent::class,
         ];
     }
 
