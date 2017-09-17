@@ -20,8 +20,7 @@ class IntentServiceProvider extends BaseIntentServiceProvider
     public function intents(): array
     {
         return [
-            ShowCategoriesIntent::class,
-            SetupDbIntent::class,
+            ShowCategoriesIntent::class
         ];
     }
 
