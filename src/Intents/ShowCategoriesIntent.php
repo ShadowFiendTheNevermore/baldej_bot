@@ -9,7 +9,7 @@ use FondBot\Conversation\Activators\Activator;
 use FondBot\Conversation\Intent;
 use FondBot\Drivers\ReceivedMessage;
 
-class ShowListingIntent extends Intent
+class ShowCategoriesIntent extends Intent
 {
     /**
      * Intent activators.
