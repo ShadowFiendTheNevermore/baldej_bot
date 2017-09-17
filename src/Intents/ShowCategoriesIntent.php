@@ -29,12 +29,7 @@ class ShowCategoriesIntent extends Intent
         $message = "Список категорий: \n";
 
         foreach ($categories->all() as $category) {
-            $message .= "
-                $category->name
-                \n
-                --------------------------
-                \n
-            ";
+            $message .= "<b>$category->name</b>\n--------------------------\n";
         }
 
         $this->sendMessage($message);
