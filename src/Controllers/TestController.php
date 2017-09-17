@@ -17,8 +17,11 @@ class TestController
 {
     public function index(RequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $repo = resolve('RepositoryManager')->get('FoodProduct');
-        $response->getBody()->write($repo->all()->toJson());
+        $products = resolve('RepositoryManager')->get('FoodProduct');
+        $products->all()->each(function($product) use ($response){
+            $response->getBody()->write($product->name . "\n");
+        });
+        // $response->getBody()->write($repo->find(1));
         return $response->withHeader('Content-type','application/json');
     }
 }
