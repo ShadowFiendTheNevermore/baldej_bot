@@ -28,8 +28,15 @@ class ShowCategoriesIntent extends Intent
         $categories = resolve('RepositoryManager')->get('FoodCategory');
         $message = "Список категорий: \n";
 
-        $categories->all()->each(function($category) use ($message){
-            $this->sendMessage("$category.....$message");
-        });
+        foreach ($categories->all() as $category) {
+            $message .= "
+                $category->name
+                \n
+                --------------------------
+                \n
+            ";
+        }
+
+        $this->sendMessage($message);
     }
 }
