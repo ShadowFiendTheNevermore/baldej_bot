@@ -23,17 +23,8 @@ class DatabaseServiceProvider extends AbstractServiceProvider implements Bootabl
     public function boot(): void
     {
         $capsule = new Capsule;
-        $capsule->addConnection([
-            'driver'    => env('DB_DRIVER', 'mysql'),
-            'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_NAME','kfc_db'),
-            'username'  => env('DB_USERNAME','root'),
-            'password'  => env('DB_PASSWD','root'),
-            'charset'   => env('DB_CHARSET','utf8'),
-            'collation' => env('DB_COLLATION','utf8_unicode_ci'),
-            'prefix'    => env('DB_PREFIX',''),
-        ]);
-
+        $config = $this->container->get('config');
+        $capsule->addConnection($config['db']['pgsql']);
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
 
@@ -45,7 +36,6 @@ class DatabaseServiceProvider extends AbstractServiceProvider implements Bootabl
 
     public function register()
     {
-        # code...
     }
 
     private function connect(Capsule $capsule) : Connection
