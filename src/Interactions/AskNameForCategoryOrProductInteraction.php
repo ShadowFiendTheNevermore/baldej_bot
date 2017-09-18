@@ -36,11 +36,14 @@ class AskNameForCategoryOrProductInteraction extends Interaction
      */
     public function process(ReceivedMessage $reply): void
     {
-        $this->remember('name', $this->makeRememberValue($reply->getText()));
-        if ($this->context('action') === 'product') {
-            $this->jump(AskSetPriceForProductInteraction::class);
-        } else {
-            $this->sendMessage('Еще в разработке');
-        }
+
+        $message = print_r($this->context('action'), true);
+        $this->sendMessage($message);
+        // $this->remember('name', $this->makeRememberValue($reply->getText()));
+        // if ($this->context('action') === 'product') {
+        //     $this->jump(AskSetPriceForProductInteraction::class);
+        // } else {
+        //     $this->sendMessage('Еще в разработке');
+        // }
     }
 }
