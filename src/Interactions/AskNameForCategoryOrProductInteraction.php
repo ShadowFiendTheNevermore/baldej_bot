@@ -16,7 +16,7 @@ class AskNameForCategoryOrProductInteraction extends Interaction
      */
     public function run(ReceivedMessage $message): void
     {
-        $this->sendMessage($message);
+        $this->sendMessage($message->getText());
     }
 
     /**
