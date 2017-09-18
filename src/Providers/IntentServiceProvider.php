@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Bot\Providers;
 
+use Bot\Intents\CreateCategoryIntent;
+use Bot\Intents\CreateProductIntent;
 use Bot\Intents\ExampleIntent;
 use Bot\Intents\FallbackIntent;
 use Bot\Intents\SetupDbIntent;
@@ -20,7 +22,9 @@ class IntentServiceProvider extends BaseIntentServiceProvider
     public function intents(): array
     {
         return [
-            ShowCategoriesIntent::class
+            ShowCategoriesIntent::class,
+            CreateCategoryIntent::class,
+            CreateProductIntent::class,
         ];
     }
 
