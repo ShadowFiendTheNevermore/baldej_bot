@@ -23,8 +23,6 @@ class AskNameForCategoryOrProductInteraction extends Interaction
         $this->remember('action', $action);
         $message = print_r($this->context(), true);
         $this->sendMessage("Вывод run: \n $message");
-
-        $this->restart();
         // if ($action === 'product') {
         //     $this->sendMessage('Укажите имя для продукта');
         // } else if ($action === 'category') {
@@ -41,7 +39,6 @@ class AskNameForCategoryOrProductInteraction extends Interaction
     {
         $message = print_r($this->context(), true);
         $this->sendMessage("Вывод process \n $message");
-        $this->restart();
         // $this->remember('name', $this->makeRememberValue($reply->getText()));
         // if ($this->context('action') === 'product') {
         //     $this->jump(AskSetPriceForProductInteraction::class);
