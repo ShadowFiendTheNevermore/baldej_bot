@@ -1,14 +1,13 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Bot\Interactions;
+namespace Bot\Interactions\Categories;
 
 use Bot\Traits\SessionStringSaver;
 use FondBot\Conversation\Interaction;
 use FondBot\Drivers\ReceivedMessage;
 
-class AskNameForCategoryOrProductInteraction extends Interaction
+class AskCategoryNameInteraction extends Interaction
 {
     use SessionStringSaver;
 

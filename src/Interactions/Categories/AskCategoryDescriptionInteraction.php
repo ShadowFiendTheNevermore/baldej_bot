@@ -1,13 +1,12 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Bot\Interactions;
+namespace Bot\Interactions\Categories;
 
 use FondBot\Conversation\Interaction;
 use FondBot\Drivers\ReceivedMessage;
 
-class AskDescriptionForCategoryOrProductInteraction extends Interaction
+class AskCategoryDescriptionInteraction extends Interaction
 {
     /**
      * Run interaction.

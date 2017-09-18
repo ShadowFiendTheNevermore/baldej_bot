@@ -1,13 +1,12 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Bot\Interactions;
+namespace Bot\Interactions\Products;
 
 use FondBot\Conversation\Interaction;
 use FondBot\Drivers\ReceivedMessage;
 
-class AskSetPriceForProductInteraction extends Interaction
+class AskProductPriceInteraction extends Interaction
 {
     /**
      * Run interaction.
@@ -16,8 +15,6 @@ class AskSetPriceForProductInteraction extends Interaction
      */
     public function run(ReceivedMessage $message): void
     {
-        $message = print_r(['message' => $message, 'context' => $this->context()],true);
-        $this->sendMessage($message);
     }
 
     /**
@@ -27,10 +24,5 @@ class AskSetPriceForProductInteraction extends Interaction
      */
     public function process(ReceivedMessage $reply): void
     {
-        $message = print_r([
-            'product_name' => $this->context('name'),
-            'action' => $this->context('action');
-        ], true);
-        $this->sendMessage($message);
     }
 }
