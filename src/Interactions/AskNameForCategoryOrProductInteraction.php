@@ -46,8 +46,9 @@ class AskNameForCategoryOrProductInteraction extends Interaction
         // $this->remember('name', $this->makeRememberValue($reply->getText()));
         // $this->remember('action', $this->action);
 
-        $message = print_r(['action' => $this->action, 'context' => $this->context(), 'reply' => $reply], true);
-        $this->sendMessage($message);
+        $this->sendMessage("action $this->action");
+        $this->sendMessage("action {$this->context()}");
+        $this->sendMessage("action $reply");
 
         // if ($this->action === 'product') {
         //     $this->jump(AskSetPriceForProductInteraction::class);
