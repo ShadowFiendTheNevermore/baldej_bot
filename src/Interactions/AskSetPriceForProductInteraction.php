@@ -16,9 +16,8 @@ class AskSetPriceForProductInteraction extends Interaction
      */
     public function run(ReceivedMessage $message): void
     {
-        $product = $this->context('name');
-
-        $this->sendMessage("Укажите цену на $product");
+        $message = print_r(['message' => $message, 'context' => $this->context()],true);
+        $this->sendMessage($message);
     }
 
     /**

@@ -11,6 +11,14 @@ use FondBot\Drivers\ReceivedMessage;
 class AskNameForCategoryOrProductInteraction extends Interaction
 {
     use SessionStringSaver;
+
+    /**
+     * Action for current command
+     * TODO: Make a class for Action
+     * 
+     * @var string
+     */
+    private $action = '';
     /**
      * Run interaction.
      *
@@ -18,16 +26,14 @@ class AskNameForCategoryOrProductInteraction extends Interaction
      */
     public function run(ReceivedMessage $message): void
     {
-        $action = ltrim($message->getText(), '/add_');
+        $this->action = ltrim($message->getText(), '/add_');
+        $this->remember('action', $this->action);
 
-        $this->remember('action', $action);
-        $message = print_r($this->context(), true);
-        $this->sendMessage("Вывод run: \n $message");
-        // if ($action === 'product') {
-        //     $this->sendMessage('Укажите имя для продукта');
-        // } else if ($action === 'category') {
-        //     $this->sendMessage('Укажите имя для категории');
-        // }
+        if ($this->action === 'product') {
+            $this->sendMessage('Укажите имя для продукта');
+        } else if ($this->action === 'category') {
+            $this->sendMessage('Укажите имя для категории');
+        }
     }
 
     /**
@@ -38,12 +44,13 @@ class AskNameForCategoryOrProductInteraction extends Interaction
     public function process(ReceivedMessage $reply): void
     {
         $message = print_r($this->context(), true);
-        $this->sendMessage("Вывод process \n $message");
-        // $this->remember('name', $this->makeRememberValue($reply->getText()));
-        // if ($this->context('action') === 'product') {
-        //     $this->jump(AskSetPriceForProductInteraction::class);
-        // } else {
-        //     $this->sendMessage('Еще в разработке');
-        // }
+        $this->remember('name', $this->makeRememberValue($reply->getText()));
+        $this->remember('action', $this->action);
+
+        if ($this->action === 'product') {
+            $this->jump(AskSetPriceForProductInteraction::class);
+        } else {
+            $this->sendMessage('Еще в разработке');
+        }
     }
 }
