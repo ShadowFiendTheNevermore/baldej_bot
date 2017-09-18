@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Bot\Interactions;
 
+use Bot\Traits\SessionStringSaver;
 use FondBot\Conversation\Interaction;
 use FondBot\Drivers\ReceivedMessage;
 
 class AskNameForCategoryOrProductInteraction extends Interaction
 {
+    use SessionStringSaver;
     /**
      * Run interaction.
      *
@@ -16,7 +18,15 @@ class AskNameForCategoryOrProductInteraction extends Interaction
      */
     public function run(ReceivedMessage $message): void
     {
-        $this->sendMessage($message->getText());
+        $action = ltrim($message->getText(), '/add_');
+
+        $this->remember('action', $action);
+
+        if ($action === 'product') {
+            $this->sendMessage('Укажите имя для продукта');
+        } else if ($action === 'category') {
+            $this->sendMessage('Укажите имя для категории');
+        }
     }
 
     /**
@@ -26,6 +36,11 @@ class AskNameForCategoryOrProductInteraction extends Interaction
      */
     public function process(ReceivedMessage $reply): void
     {
-        // Process reply to the message you sent in method "run".
+        $this->remember('name', $this->makeRememberValue($reply->getText()));
+        if ($this->context('action') === 'product') {
+            $this->jump(AskSetPriceForProductInteraction::class);
+        } else {
+            $this->sendMessage('Еще в разработке');
+        }
     }
 }

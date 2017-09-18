@@ -17,12 +17,17 @@ class TestController
 {
     public function index(RequestInterface $request, ResponseInterface $response): ResponseInterface
     {
-        $products = resolve('RepositoryManager')->get('FoodProduct');
-        $products->all()->each(function($product) use ($response){
-            $response->getBody()->write($product->name . "\n");
-        });
-        // $response->getBody()->write($repo->find(1));
-        return $response->withHeader('Content-type','application/json');
+        $action = '/add_product';
+        $action = ltrim($action, '/add_');
+
+        $locale = resolve('config')['locale']['ru'];
+
+        // $products = resolve('RepositoryManager')->get('FoodProduct');
+        // $products->all()->each(function($product) use ($response){
+        //     $response->getBody()->write($product->name . "\n");
+        // });
+        $response->getBody()->write($locale[$action]);
+        return $response;
     }
 }
 

@@ -65,7 +65,8 @@ class ConfigServiceProvider extends AbstractServiceProvider
     public function files() : array
     {
         return [
-            'db' => 'database/database.config.php'
+            'db' => 'database/database.config.php',
+            'locale' => 'locale/locale.php'
         ];
     }
 
