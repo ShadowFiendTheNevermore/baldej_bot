@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bot\Intents;
 
-use Bot\Interactions\AskNameForCategoryOrProductInteraction;
+use Bot\Interactions\Products\AskProductNameInteraction;
 use FondBot\Conversation\Activators\Activator;
 use FondBot\Conversation\Intent;
 use FondBot\Drivers\ReceivedMessage;
@@ -32,6 +32,6 @@ class CreateProductIntent extends Intent
 
     public function run(ReceivedMessage $message): void
     {
-        $this->jump(AskNameForCategoryOrProductInteraction::class);
+        $this->jump(AskProductNameInteraction::class);
     }
 }
