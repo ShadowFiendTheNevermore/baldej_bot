@@ -4,20 +4,13 @@ declare(strict_types=1);
 
 namespace Bot\Intents;
 
-use Bot\Interactions\Products\AskProductNameInteraction;
+use Bot\Interactions\Products\AskProductProperties;
 use FondBot\Conversation\Activators\Activator;
 use FondBot\Conversation\Intent;
 use FondBot\Drivers\ReceivedMessage;
 
 class CreateProductIntent extends Intent
 {
-
-    /**
-     * Name of product
-     * 
-     * @var string
-     */
-    protected $name = '';
     /**
      * Intent activators.
      *
@@ -32,6 +25,6 @@ class CreateProductIntent extends Intent
 
     public function run(ReceivedMessage $message): void
     {
-        $this->jump(AskProductNameInteraction::class);
+        $this->jump(AskProductProperties::class);
     }
 }

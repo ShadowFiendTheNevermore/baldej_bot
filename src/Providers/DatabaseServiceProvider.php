@@ -24,7 +24,7 @@ class DatabaseServiceProvider extends AbstractServiceProvider implements Bootabl
     {
         $capsule = new Capsule;
         $config = $this->container->get('config');
-        $capsule->addConnection($config['db']['pgsql']);
+        $capsule->addConnection($config['db'][env('DB_DRIVER','pgsql')]);
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
 
